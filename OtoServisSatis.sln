@@ -5,6 +5,12 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtoServisSatis.WebUI", "OtoServisSatis.WebUI\OtoServisSatis.WebUI.csproj", "{413D8764-3CFF-4F29-88ED-1F602274A38D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtoServisSatis.Entities", "OtoServisSatis.Entities\OtoServisSatis.Entities.csproj", "{5F174D4D-5272-4CAB-A0DD-F26195CF0106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtoServisSatis.Data", "OtoServisSatis.Data\OtoServisSatis.Data.csproj", "{0B146CD4-0B8A-4350-9734-D18B8E83CE1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtoServisSatis.Service", "OtoServisSatis.Service\OtoServisSatis.Service.csproj", "{ED692EAA-5AE4-411E-B018-6EE74BCEFE4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{413D8764-3CFF-4F29-88ED-1F602274A38D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{413D8764-3CFF-4F29-88ED-1F602274A38D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{413D8764-3CFF-4F29-88ED-1F602274A38D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F174D4D-5272-4CAB-A0DD-F26195CF0106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F174D4D-5272-4CAB-A0DD-F26195CF0106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F174D4D-5272-4CAB-A0DD-F26195CF0106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F174D4D-5272-4CAB-A0DD-F26195CF0106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B146CD4-0B8A-4350-9734-D18B8E83CE1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B146CD4-0B8A-4350-9734-D18B8E83CE1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B146CD4-0B8A-4350-9734-D18B8E83CE1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B146CD4-0B8A-4350-9734-D18B8E83CE1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED692EAA-5AE4-411E-B018-6EE74BCEFE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED692EAA-5AE4-411E-B018-6EE74BCEFE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED692EAA-5AE4-411E-B018-6EE74BCEFE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED692EAA-5AE4-411E-B018-6EE74BCEFE4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

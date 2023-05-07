@@ -1,7 +1,13 @@
+
+using OtoServisSatis.Service.Abstract;
+using OtoServisSatis.Service.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient(typeof(IService<>), typeof(Service<>)); // bizim yapmýþ olduðumuz servis katmanýný kullana bilmek için yaptýk
 
 var app = builder.Build();
 
@@ -19,6 +25,11 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+           name: "admin",
+           pattern: "{area:exists}/{controller=Main}/{action=Index}/{id?}"
+         );
 
 app.MapControllerRoute(
     name: "default",

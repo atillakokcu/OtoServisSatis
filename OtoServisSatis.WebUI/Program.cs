@@ -1,4 +1,6 @@
 
+using OtoServisSatis.Data;
+using OtoServisSatis.Entities;
 using OtoServisSatis.Service.Abstract;
 using OtoServisSatis.Service.Concrete;
 
@@ -6,8 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<DatabaseContext>();
 
-builder.Services.AddTransient(typeof(IService<>), typeof(Service<>)); // bizim yapmýþ olduðumuz servis katmanýný kullana bilmek için yaptýk
+
+builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
+;// bizim yapmýþ olduðumuz servis katmanýný kullana bilmek için yaptýk
+
 
 var app = builder.Build();
 

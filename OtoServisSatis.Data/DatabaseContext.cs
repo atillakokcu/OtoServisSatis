@@ -1,8 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using OtoServisSatis.Entities;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System;
 
 namespace OtoServisSatis.Data
 {

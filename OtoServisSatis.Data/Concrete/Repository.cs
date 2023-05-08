@@ -19,7 +19,7 @@ namespace OtoServisSatis.Data.Concrete
         public Repository(DatabaseContext contex)
         {
             _Contex = contex;
-            _DbSet = _Contex.Set<T>();
+            _DbSet = contex.Set<T>();
         }
 
 
@@ -78,10 +78,7 @@ namespace OtoServisSatis.Data.Concrete
             return await _DbSet.FirstOrDefaultAsync(expression);
         }
 
-        public void Remove(T entitiy)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public int Save()
         {

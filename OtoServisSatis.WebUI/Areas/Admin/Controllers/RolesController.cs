@@ -37,11 +37,14 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
         // POST: RolesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Rol rol)
         {
             try
             {
-                return RedirectToAction(nameof(IndexAsync));
+                _service.Add(rol);
+                _service.Save();
+
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -50,19 +53,22 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
         }
 
         // GET: RolesController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var model = await _service.FindAsync(id);
+            return View(model);
         }
 
         // POST: RolesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Rol rol)
         {
             try
             {
-                return RedirectToAction(nameof(IndexAsync));
+                _service.Update(rol);
+                _service.Save();
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -71,19 +77,23 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
         }
 
         // GET: RolesController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var model = await _service.FindAsync(id);
+
+            return View(model);
         }
 
         // POST: RolesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Rol rol)
         {
             try
             {
-                return RedirectToAction(nameof(IndexAsync));
+                _service.Delete(rol);
+                _service.Save();
+                return RedirectToAction(nameof(Index));
             }
             catch
             {

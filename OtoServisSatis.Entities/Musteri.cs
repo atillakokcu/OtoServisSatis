@@ -7,9 +7,9 @@ namespace OtoServisSatis.Entities
         public int Id { get; set; }
         public int AracId { get; set; }
 
-        [StringLength(50)]
+        [StringLength(50), Display(Name = "Adı"), Required(ErrorMessage = "{0} Boş bırakılamaz")]
         public string Adi { get; set; }
-        [StringLength(50)]
+        [StringLength(50), Display(Name = "Soyadı"), Required(ErrorMessage = "{0} Boş bırakılamaz")]
         public string Soyadi { get; set; }
         [StringLength(11)]
         public string? TcNo { get; set; }

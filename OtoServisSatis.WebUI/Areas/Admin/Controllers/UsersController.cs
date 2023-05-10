@@ -67,39 +67,57 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
         }
 
         // GET: UsersController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> EditAsync(int id)
         {
-            return View();
+            var model = await _service.FindAsync(id);
+
+
+            ViewBag.RolId =new SelectList(_serviceRol.GetAll(),"Id","Adi");
+            return View(model);
         }
 
         // POST: UsersController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id,Kullanici kullanici)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _service.Update(kullanici);
+                    _service.Save();
+
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "Hata oluştu...");
+                }
+
             }
-            catch
-            {
-                return View();
-            }
+            ViewBag.RolId = new SelectList(_serviceRol.GetAll(),"Id","Adi");
+            return View(kullanici);
         }
 
         // GET: UsersController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> DeleteAsync(int id)
         {
-            return View();
+            var model = await _service.FindAsync(id);
+
+            return View(model);
         }
 
         // POST: UsersController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Kullanici kullanici)
         {
             try
             {
+                _service.Delete(kullanici);
+                _service.Save();
+
                 return RedirectToAction(nameof(Index));
             }
             catch

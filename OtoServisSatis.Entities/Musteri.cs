@@ -5,6 +5,7 @@ namespace OtoServisSatis.Entities
     public class Musteri:IEntitiy
     {
         public int Id { get; set; }
+        [Display(Name = "Araç")]
         public int AracId { get; set; }
 
         [StringLength(50), Display(Name = "Adı"), Required(ErrorMessage = "{0} Boş bırakılamaz")]
@@ -21,6 +22,7 @@ namespace OtoServisSatis.Entities
         public string? Telefon { get; set; }
         
         public string? Notlar { get; set; }
+        [Display(Name = "Araç")]
         public virtual Arac? Arac { get; set; }
 
 

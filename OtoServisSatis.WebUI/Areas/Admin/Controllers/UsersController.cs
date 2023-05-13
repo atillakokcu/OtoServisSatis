@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,7 +9,7 @@ using OtoServisSatis.Service.Abstract;
 
 namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")] // Areanın içinde olduğu için bunu yazmamız şart yoksa controller çalışmaz
+    [Area("Admin"), Authorize] // Areanın içinde olduğu için bunu yazmamız şart yoksa controller çalışmaz
 
     public class UsersController : Controller
     {

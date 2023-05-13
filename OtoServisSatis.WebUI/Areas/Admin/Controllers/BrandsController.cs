@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OtoServisSatis.Entities;
@@ -6,7 +7,7 @@ using OtoServisSatis.Service.Abstract;
 
 namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"),Authorize]
     public class BrandsController : Controller
     {
         private readonly IService<Marka> _service;

@@ -7,68 +7,43 @@ using OtoServisSatis.Service.Abstract;
 namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin"), Authorize]
-    // bu controller area altında çalıştığı için bunu belirtmemiz gerekiyor
-    public class RolesController : Controller
+    public class ServicesController : Controller
     {
-        private readonly IService<Rol> _service;
+        private readonly IService<Servis> _service;
 
-        public RolesController(IService<Rol> service)
+        public ServicesController(IService<Servis> service)
         {
             _service = service;
         }
 
-        // GET: RolesController
+
+        // GET: ServicesController
         public async Task<ActionResult> IndexAsync()
         {
             var model = await _service.GetAllAsync();
             return View(model);
         }
 
-        // GET: RolesController/Details/5
+        // GET: ServicesController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: RolesController/Create
+        // GET: ServicesController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RolesController/Create
+        // POST: ServicesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Rol rol)
+        public async Task<ActionResult> CreateAsync(Servis servis)
         {
             try
             {
-                _service.Add(rol);
-                _service.Save();
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RolesController/Edit/5
-        public async Task<ActionResult> Edit(int id)
-        {
-            var model = await _service.FindAsync(id);
-            return View(model);
-        }
-
-        // POST: RolesController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Rol rol)
-        {
-            try
-            {
-                _service.Update(rol);
+               await _service.AddAsync(servis);
                 _service.Save();
                 return RedirectToAction(nameof(Index));
             }
@@ -78,23 +53,52 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
             }
         }
 
-        // GET: RolesController/Delete/5
-        public async Task<ActionResult> Delete(int id)
+        // GET: ServicesController/Edit/5
+        public async Task<ActionResult> EditAsync(int id)
         {
             var model = await _service.FindAsync(id);
-
             return View(model);
         }
 
-        // POST: RolesController/Delete/5
+        // POST: ServicesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, Rol rol)
+        public ActionResult Edit(int id, Servis servis)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _service.Update(servis);
+                    _service.Save();
+
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "Hata meydana geldi");
+                }
+            }
+            return View(servis);
+        }
+
+        // GET: ServicesController/Delete/5
+        public async Task<ActionResult> DeleteAsync(int id)
+        {
+            var model = await _service.FindAsync(id);
+            return View(model);
+        }
+
+        // POST: ServicesController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, Servis servis)
         {
             try
             {
-                _service.Delete(rol);
+                _service.Delete(servis);
                 _service.Save();
+
                 return RedirectToAction(nameof(Index));
             }
             catch

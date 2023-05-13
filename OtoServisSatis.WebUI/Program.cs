@@ -3,6 +3,7 @@ using OtoServisSatis.Data;
 using OtoServisSatis.Entities;
 using OtoServisSatis.Service.Abstract;
 using OtoServisSatis.Service.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,17 @@ builder.Services.AddDbContext<DatabaseContext>();
 
 
 builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
-;// bizim yapmýþ olduðumuz servis katmanýný kullana bilmek için yaptýk
+// bizim yapmýþ olduðumuz servis katmanýný kullana bilmek için yaptýk
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+{
+    x.LoginPath = "/Admin/Login"; // kullanýcýlar nerden login olacaðýný belirttik
+    x.AccessDeniedPath= "/AccessDenied"; // yetkisiz eriþimleri yönlendirdiðimiz yer
+    x.LogoutPath = "/Admin/Logout";// çýkýþý yaptýðýmýz adresimiz budur
+    x.Cookie.Name = "Admin";
+    x.Cookie.MaxAge=TimeSpan.FromDays(7); //cookinin süresini berlittik
+    x.Cookie.IsEssential= true; // bu çerezin önemli olduðunu belirtir giriþ yaparken bu cookinin çalýþýyor olmasý zorunludur demek gibi
+
+});
 
 
 var app = builder.Build();
@@ -30,6 +41,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); // bunu authorizaitondan önce yazmamz gerekmektedir. Login iþlemlerinin çalýþmasý için buna ihtiyacýmýz var
 app.UseAuthorization();
 
 app.MapControllerRoute(

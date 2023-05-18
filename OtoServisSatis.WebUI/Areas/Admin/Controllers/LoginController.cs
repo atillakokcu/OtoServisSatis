@@ -37,10 +37,11 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
                 }
                 else
                 {
-                    var claims = new List<Claim>()
+                    var claims = new List<Claim>() //https://learn.microsoft.com/tr-tr/dotnet/api/system.security.claims.claim?view=netcore-3.1
+                    //https://learn.microsoft.com/tr-tr/aspnet/core/security/authentication/cookie?view=aspnetcore-3.1 araştır
                     {
                         new Claim(ClaimTypes.Name,account.Adi),
-                        new Claim("Role","Admin")
+                        new Claim("Role","Admin") // claimsler key value tipindedir
                     };
 
                     var userIdentity = new ClaimsIdentity(claims,"Login");
@@ -58,5 +59,15 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
 
             return View();
         }
+
+
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+
+            return Redirect("~/Admin/Login");
+        }
+
     }
 }

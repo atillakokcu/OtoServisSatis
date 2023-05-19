@@ -70,7 +70,7 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
         }
 
         // GET: CarsController/Edit/5
-        public async Task<ActionResult> EditAsync(int id)
+        public async Task<ActionResult> Edit(int id)
         {
             ViewBag.MarkaId = new SelectList(_serviceMarka.GetAll(), "Id", "Adi");
             var model = await _service.FindAsync(id);
@@ -81,7 +81,7 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
         // POST: CarsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditAsync(int id, Arac arac, IFormFile? Resim1, IFormFile? Resim2, IFormFile? Resim3)
+        public async Task<ActionResult> Edit(int id, Arac arac, IFormFile? Resim1, IFormFile? Resim2, IFormFile? Resim3)
         {
             if (ModelState.IsValid)
             {

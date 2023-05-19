@@ -28,6 +28,9 @@ namespace OtoServisSatis.Entities
         [Display(Name = "Satışta mı?")]
         public bool Satistami { get; set; }
 
+        [Display(Name = "Anasayfaya Gösterimi")]
+        public bool Anasayfa { get; set; }
+
         [Required(ErrorMessage = "{0} Boş bırakılamaz")]
         public string Notlar { get; set; }
 

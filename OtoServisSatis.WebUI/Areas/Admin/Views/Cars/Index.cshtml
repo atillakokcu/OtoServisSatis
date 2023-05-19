@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<OtoServisSatis.Entities.Arac>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Araçlar";
 }
 
-<h1>Index</h1>
+<h1>Araçlar</h1>
 
 <p>
     <a class="btn btn-outline-primary" asp-action="Create">Yeni Ekle</a>
@@ -30,8 +30,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Satistami)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Notlar)
+             <th>
+                @Html.DisplayNameFor(model => model.Anasayfa)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Resim1)
@@ -65,7 +65,7 @@
                     @Html.DisplayFor(modelItem => item.Satistami)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Notlar)
+                    @Html.DisplayFor(modelItem => item.Anasayfa)
                 </td>
                 <td>
                     <img src="~/Img/Cars/@item.Resim1" alt="" height="34" />

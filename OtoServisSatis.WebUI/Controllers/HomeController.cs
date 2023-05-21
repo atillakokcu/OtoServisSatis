@@ -9,10 +9,10 @@ namespace OtoServisSatis.WebUI.Controllers
     public class HomeController : Controller
     {
         private readonly IService<Slider> _service;
-        private readonly IService<Arac> _serviceArac;
+        private readonly ICarService _serviceArac;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, IService<Slider> service, IService<Arac> serviceArac)
+        public HomeController(ILogger<HomeController> logger, IService<Slider> service, ICarService serviceArac)
         {
             _logger = logger;
             _service = service;
@@ -24,7 +24,7 @@ namespace OtoServisSatis.WebUI.Controllers
             var model = new HomePageViewModel()
             {
                 Sliders = await _service.GetAllAsync(),
-                Araclar = await _serviceArac.GetAllAsync(a=>a.Anasayfa==true)
+                Araclar = await _serviceArac.GetCustomCarList(a=>a.Anasayfa)
             };
 
             return View(model);
